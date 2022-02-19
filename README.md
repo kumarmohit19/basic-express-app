@@ -1,9 +1,9 @@
 # Practice Problem:
+1. In our mini project built till session3 let’s add custom filters as mentioned below
+   *	Get books with given title 
+   *	Get books after given published date
 
-1. In our last mini project on books api, let us now use mysql and sequelize to fetch data from it.
-
-2. Update the book controller and model accordingly
-
+2. Also create a middleware to validate request instead and check for empty title here
 
 
 

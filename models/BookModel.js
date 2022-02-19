@@ -8,7 +8,7 @@ const { DataTypes } = Sequelize;
 // Define schema
 const Books = db.define('books', {
   
-    // Define attributes
+  // Define attributes
   title: {
     type: DataTypes.STRING
   },
