@@ -1,18 +1,33 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const db = require("./config/database");
 const bookRoutes = require('./routes/BookRoutes')
 
 // initiaizing express
 const app = express();
 
 /**
- * Using the body-parser middleware
- * 
- * Using for parsing the request. 
- * Parsing the request of the type json and convert that to object
- * */
- app.use(bodyParser.urlencoded({ extended: true }));
- app.use(bodyParser.json());
+* Using the body-parser middleware
+* 
+* Using for parsing the request. 
+* Parsing the request of the type json and convert that to object
+* */
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+const connectDB = async () => {
+   await db.authenticate();
+}
+
+// Testing database connection 
+try {
+   connectDB();
+   console.log('Connection has been established successfully.');
+} catch (error) {
+   console.error('Unable to connect to the database:', error);
+}
+
+
 
 app.get('/', (req, res)=> {
    res.send("This API is working")

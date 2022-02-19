@@ -6,10 +6,10 @@ const bookController = require("../controllers/BookController")
 router.post("/", bookController.addBook);
 
 //Route for the GET request to fetch all the books details
-router.get("/", bookController.findAllBooks);
+router.get("/", bookController.getAllBooks);
 
 //Route for the GET request to fetch a book based on the id
-router.get("/:id", bookController.findBookById);
+router.get("/:id", bookController.getBookById);
 
 //Route for the PUT request to update a book based on the id
 router.put("/:id", bookController.updateBookById);

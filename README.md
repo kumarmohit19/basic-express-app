@@ -1,10 +1,9 @@
-# Practice Problems
+# Practice Problem:
 
-1. From our previous exercise let’s continue to add RES API in it and create model and controller on Books and create as many APIs as we can.
+1. In our last mini project on books api, let us now use mysql and sequelize to fetch data from it.
 
-   * For example, consider the books as an Object with id, name, author and release date and publisher.
+2. Update the book controller and model accordingly
 
-2. Now, create routes and test the APIs using postman.
 
 
 
