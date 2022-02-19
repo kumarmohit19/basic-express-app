@@ -15,18 +15,10 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-const connectDB = async () => {
-   await db.authenticate();
-}
-
-// Testing database connection 
-try {
-   connectDB();
-   console.log('Connection has been established successfully.');
-} catch (error) {
-   console.error('Unable to connect to the database:', error);
-}
-
+// Connecting to database 
+db.authenticate()
+.then((res) => console.log('Connection has been established successfully.'))
+.catch((err) => console.error('Unable to connect to the database:', error))
 
 
 app.get('/', (req, res)=> {
