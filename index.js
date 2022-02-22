@@ -1,7 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const db = require("./config/database");
+const db = require("./configs/database");
 const bookRoutes = require('./routes/BookRoutes')
+const authRoutes = require('./routes/authRoutes')
 
 // initiaizing express
 const app = express();
@@ -25,6 +26,8 @@ app.get('/', (req, res)=> {
    res.send("This API is working")
 });
 
+// auth routes to handle user login and register
+app.use('/', authRoutes);
 // book routes to handle all api starting with /books
 app.use('/books', bookRoutes);
 

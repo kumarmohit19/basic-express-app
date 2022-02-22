@@ -2,7 +2,7 @@
 const Sequelize = require("sequelize");
  
 // create connection
-const db = new Sequelize('books_db', 'root', 'your_db_password', {
+const db = new Sequelize('books_db', 'root', '', {
     host: 'localhost',
     dialect: 'mysql'
 });

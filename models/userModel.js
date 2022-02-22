@@ -6,22 +6,14 @@ const db = require("../configs/database");
 const { DataTypes } = Sequelize;
  
 // Define schema
-const Books = db.define('books', {
-  
-  // Define attributes
-  title: {
+const Users = db.define('users', {
+  username: {
     type: DataTypes.STRING
   },
-  price: {
-    type: DataTypes.DOUBLE
-  },
-  author: {
+  email: {
     type: DataTypes.STRING
   },
-  published: {
-    type: DataTypes.DATEONLY
-  },
-  publisher: {
+  password: {
     type: DataTypes.STRING
   }
 },{
@@ -30,4 +22,4 @@ const Books = db.define('books', {
 });
  
 // Export model Product
-module.exports= Books;
+module.exports= Users;
