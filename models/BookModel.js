@@ -18,6 +18,9 @@ const Books = db.define('books', {
   author: {
     type: DataTypes.STRING
   },
+  authorId: {
+    type: DataTypes.INTEGER
+  },
   published: {
     type: DataTypes.DATEONLY
   },

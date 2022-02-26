@@ -13,26 +13,28 @@ const getAllBooks = async (req, res) => {
     
     if ( bookName && publishedAfter ) {
         const publishedAfterDate = new Date(publishedAfter);
-        console.log(publishedAfterDate)
+
         promise = Books.findAll({
             where: {
                 title: {
                     [Op.substring]: bookName 
                 },
                 published: {
-                    [Op.gt]: publishedAfter 
-                }
+                    [Op.gt]: publishedAfterDate 
+                },
+                authorId: req.user
             }
         });
     }
     else if ( publishedAfter ) {
         const publishedAfterDate = new Date(publishedAfter);
-        console.log(publishedAfterDate)
+
         promise = Books.findAll({
             where: {
                 published: {
                     [Op.gt]: publishedAfterDate 
-                }
+                },
+                authorId: req.user
             }
         });
     }
@@ -41,11 +43,17 @@ const getAllBooks = async (req, res) => {
             where: {
                 title: {
                     [Op.substring]: bookName 
-                }
-            }
+                },
+                authorId: req.user
+            },
+            
         });
     } else {
-        promise = Books.findAll();
+        promise = Books.findAll({
+            where: {
+                authorId: req.user
+            }
+        });
     }
     
     promise
@@ -65,7 +73,8 @@ const getAllBooks = async (req, res) => {
 const getBookById = async (req, res) => {
     Books.findAll({
            where: {
-               id: req.params.id
+               id: req.params.id,
+               authorId: req.user
            }
         })
         .then((result) => {
@@ -85,6 +94,11 @@ const getBookById = async (req, res) => {
  * Create and save a new Book
  */
 const addBook = async (req, res) => {
+
+    // adding user in book object
+    req.body.authorId = req.user
+
+    console.log(req.body)
 
     Books.create(req.body)
         .then((result) => {

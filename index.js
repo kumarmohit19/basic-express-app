@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 // Connecting to database 
 db.authenticate()
 .then((res) => console.log('Connection has been established successfully.'))
-.catch((err) => console.error('Unable to connect to the database:', error))
+.catch((err) => console.error('Unable to connect to the database:', err))
    
 
 app.get('/', (req, res)=> {
